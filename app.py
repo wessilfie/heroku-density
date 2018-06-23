@@ -390,7 +390,7 @@ def capacity():
     """Render and show capacity page"""
     cur_data = db.get_latest_data(g.cursor)
     #TO-DO: fix last updated and times
-    #last_updated = cur_data[0]['dump_time'].strftime("%B %d %Y, %I:%M %p")
+    last_updated = cur_data[0]['dump_time'].strftime("%B %d %Y, %I:%M %p")
     locations = annotate_fullness_percentage(cur_data)
     times = {'Lerner 1' : 1200, 'Lerner 2' : 1300}
     #times = librarytimes.dict_for_time()

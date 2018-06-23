@@ -1,0 +1,68 @@
+<!doctype html>
+<head>
+  <style type="text/css">
+    .opening-time{
+      color: #F9600A;
+      font-style: italic;
+      padding-left: 5px;
+      font-size: 90%;
+    }
+    .special-notice{
+      font-style: italic;
+    }
+  </style>
+    {% block head %}
+    <title>Density</title>
+    <!--CSS files-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-18504951-5', 'auto');
+      ga('send', 'pageview');
+    </script>
+    {% endblock %}
+</head>
+<body>
+  <div class="wrapper">
+    <div class="content">
+      <div class="logoContainer">
+        <div class="container">
+          <div class="text-center">
+            <a href="/"><img class="logo" src="{{ url_for('static', filename='img/logo.svg')}}"></a>
+          </div>
+        </div>
+      </div>
+      <div class="navContainer">
+        <div class="container">
+          <span id="nav-home" class="navItem"><a href="/">HOME</a></span>
+          <span id="nav-predict" class="navItem"><a href="/predict">PREDICTIONS</a></span>
+          <span id="nav-map" class="navItem" ><a href="/map">MAP</a></span>
+          <span id="nav-about" class="navItem"><a href="/about">ABOUT</a></span>
+          <span id="nav-api" class="navItem"><a href="/docs">API</a></span>
+        </div>
+      </div>
+      {% block body %}{% endblock %}
+      <footer class="footer">
+          <div class="container">
+              <p class="left">Maintained by <a href="https://adicu.com/labs">ADI Labs</a></p>
+              <p class="right"><a href="mailto:labs@adicu.com?subject=[ADI Density]">Report a bug or suggest a feature</a></p>
+              <p class="footer-text mobile">Maintained by <a href="https://adicu.com/labs">ADI Labs</a></p>
+              <p class="footer-text mobile"><a href="mailto:labs@adicu.com?subject=[ADI Density]">Report a bug or suggest a feature</a></p>
+          </div>
+      </footer>
+      <!--Javascript Files-->
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+      {% block scripts %}{% endblock %}
+    </div>
+  </div>
+</body>

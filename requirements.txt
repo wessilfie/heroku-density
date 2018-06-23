@@ -1,0 +1,6 @@
+bokeh==0.13.0
+numpy==1.14.4
+pandas==0.23.0
+pipenv==2018.5.18
+Flask==1.0.2
+Flask-Caching==1.4.0

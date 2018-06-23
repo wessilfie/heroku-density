@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+    <script src="https://apis.google.com/js/client:platform.js" async defer></script>
+{% endblock %}
+
+{% block body %}
+{% if success %}
+{% else %}
+<div class="textContainer">
+    <div class="container">
+        <div>
+	        <p class="about">Wireless Density Data for Columbia University</p>
+		    <p>Welcome to Density, an API that gives Columbia developers access to wireless density data.</p>
+	    </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="container main-body">
+  {% if success %}
+    <h1> Welcome {{ uni }}! </h1>
+    <h5> Your code is: {{ code }} </h5>
+  {% else %}
+    {% if reason %}
+      <h3> {{ reason }} </h3>
+    {% endif %}
+
+    <h3>Getting access to the API</h3>
+    <h5>To use the API, you will need a Columbia or Barnard email address.</h5>
+    <button id='signinButton' class="btn btn-primary blue-btn" onclick='login()' style="margin-bottom: 1em;">
+        Get access
+    </button>
+    <script>
+      function login() {
+          var params = {
+              'callback': signinCallback,
+              'clientid': '493219355294-iak86ncpmo0ff749ghlptdijgs13pega.apps.googleusercontent.com',
+              'scope': 'https://www.googleapis.com/auth/plus.profile.emails.read',
+              'requestvisibleactions': 'http://schema.org/AddAction',
+              'cookiepolicy': 'single_host_origin'
+          };
+          gapi.auth.signIn(params);
+      }
+      function signinCallback(authResult) {
+          if (authResult['status']['signed_in']) {
+          // Update the app to reflect a signed in user
+          // Hide the sign-in button now that the user is authorized, for example:
+          document.location.href = '/auth?code=' + authResult.code
+        }
+      }
+    </script>
+  {% endif %}
+</div>
+{% endblock %}

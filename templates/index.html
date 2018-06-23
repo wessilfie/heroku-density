@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block head %}
+    {{ super() }}
+    <script src="https://apis.google.com/js/client:platform.js" async defer></script>
+{% endblock %}
+
+{% block body %}
+<div class="container main-body">
+    <h1>Wireless Density Data for Columbia University</h1>
+    <p>Welcome to Density, an API that gives Columbia developers access to wireless density data.
+        We currently have a feed of data that updates every 15 minutes.
+    </p>
+
+    <h3>Getting access to the API</h3>
+    <p>
+        To use the API, you will need a Columbia or Barnard e-mail address.
+    </p>
+    <button id='signinButton' onclick='login()'>
+        Get access
+    </button>
+    <h3>How to use the API</h3>
+    <p>
+        Let's say we want to get the all the wireless density data across Columbia in the last 15 minutes.
+        Just use the endpoint: density.com/latest.
+    </p>
+    <p>
+        This will give you JSON containing the latest information in the following format:
+    </p>
+</div>
+<script>
+function login() {
+    // Send params to Google+ API.
+    var params = {
+        'callback': signinCallback,
+        'clientid': '{{ client_id }}',
+        'scope': 'https://www.googleapis.com/auth/plus.profile.emails.read',
+        'requestvisibleactions': 'http://schema.org/AddAction',
+        'cookiepolicy': 'single_host_origin'
+    };
+    gapi.auth.signIn(params);
+}
+function signinCallback(authResult) {
+    if (authResult['status']['signed_in']) {
+    // Redirect to auth page.
+    document.location.href = '/auth?code=' + authResult.code
+  }
+}
+</script>
+{% endblock %}
+

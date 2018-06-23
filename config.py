@@ -11,7 +11,7 @@ import os
 from flask.json import JSONEncoder
 
 # dictionary the flask app configures itself from
-keys = {'DB_URL', 'GOOGLE_CLIENT_ID', 'SECRET_KEY', 'UPLOAD_KEY'}
+keys = {'DATABASE_URL', 'GOOGLE_CLIENT_ID', 'SECRET_KEY', 'UPLOAD_KEY'}
 
 try:
     config = {key: os.environ[key] for key in keys}

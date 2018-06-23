@@ -5,3 +5,6 @@ pandas==0.23.0
 pipenv==2018.5.18
 Flask==1.0.2
 Flask-Caching==1.4.0
+oauth2client==4.1.2
+psycopg2==2.7.4
+Werkzeug==0.14.1

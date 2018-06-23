@@ -422,7 +422,7 @@ def predict():
     if tmrw_pred is None:
         tmrw_pred = predict_today(data)
         cache.set('predictionToday', tmrw_pred, timeout=5 * 60)
-
+    #hi
     # make plots from predictions
     script, divs = graphics.create_all_buildings(today_pred.transpose())
 

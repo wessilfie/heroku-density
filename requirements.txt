@@ -8,3 +8,4 @@ Flask-Caching==1.4.0
 oauth2client==4.1.2
 psycopg2-binary==2.7.5
 Werkzeug==0.14.1
+gunicorn==19.8.1

@@ -446,3 +446,7 @@ def upload():
             Please contact someone in ADI for more details.', 500
 
     return 'Data successfully uploaded.', 200
+
+
+if __name__ == "__main__":
+    app.run()
